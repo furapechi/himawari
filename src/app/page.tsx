@@ -258,7 +258,10 @@ export default function Home() {
           <div className="hero-grid">
             <div className="hero-copy">
               <p className="hero-eyebrow"><span>ABIKO, CHIBA</span>児童発達支援・放課後等デイサービス</p>
-              <h1>遊びから、<br /><em>「できた！」</em>へ。</h1>
+              <h1>
+                <span className="hero-title-prefix">遊びから、</span>
+                <span className="hero-title-result"><em>「できた！」</em>へ。</span>
+              </h1>
               <p className="hero-lead">サッカーを中心とした運動療育で、<br className="desktop-only" />一人ひとりの個性と未来を、明るくのびやかに。</p>
               <div className="hero-buttons">
                 <a className="button button-primary" href="#contact">見学・相談を申し込む<ArrowRight /></a>

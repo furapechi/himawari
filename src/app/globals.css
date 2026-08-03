@@ -592,6 +592,15 @@ svg {
   white-space: nowrap;
 }
 
+.hero-title-prefix,
+.hero-title-result {
+  display: block;
+}
+
+.hero-title-result {
+  white-space: nowrap;
+}
+
 .hero h1 em {
   color: var(--green);
   font-style: normal;
@@ -2057,6 +2066,7 @@ svg {
   .hero-grid { padding: 52px 20px 88px; }
   .hero-eyebrow { align-items: flex-start; flex-direction: column; font-size: 9px; margin-bottom: 18px; }
   .hero h1 { font-size: clamp(48px, 15.5vw, 67px); line-height: 1.35; white-space: normal; }
+  .hero-title-result { font-size: 0.74em; letter-spacing: 0; line-height: 1.2; margin-top: 0.08em; }
   .hero h1 em::after { height: 8px; right: -3px; top: 2px; width: 8px; }
   .hero-lead { font-size: 14px; line-height: 1.9; margin-top: 20px; }
   .desktop-only { display: none; }
@@ -2150,6 +2160,7 @@ svg {
 @media (max-width: 380px) {
   .brand-type small { display: none; }
   .hero h1 { font-size: 45px; }
+  .hero-title-result { font-size: 0.72em; }
   .hero-badge-note { display: none; }
   .season-strip { grid-template-columns: 1fr; }
   .season-strip > div { border-bottom: 1px solid var(--line); border-right: 0; }
