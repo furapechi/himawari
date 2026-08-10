@@ -306,6 +306,11 @@ svg {
   transform: translateY(-2px);
 }
 
+.instagram-link:focus-visible {
+  outline: 3px solid rgba(238, 42, 123, 0.28);
+  outline-offset: 3px;
+}
+
 .header-contact {
   align-items: center;
   background: var(--green-dark);
@@ -350,6 +355,8 @@ svg {
   flex-direction: column;
   inset: 0;
   opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 24px clamp(24px, 7vw, 48px) 42px;
   pointer-events: none;
   position: fixed;
@@ -421,6 +428,14 @@ svg {
 
 .mobile-menu nav a svg {
   width: 20px;
+}
+
+.mobile-menu nav a.mobile-menu-instagram {
+  color: var(--green-dark);
+}
+
+.mobile-menu nav a.mobile-menu-instagram svg {
+  color: #d62976;
 }
 
 .mobile-menu-contact {
@@ -1912,8 +1927,10 @@ svg {
 .footer-brand .brand-type strong { color: var(--white); }
 .footer-brand .brand-type small { color: rgba(255, 255, 255, 0.5); }
 .footer-brand > p { color: rgba(255, 255, 255, 0.55); font-family: "Yu Mincho", serif; font-size: 13px; margin-top: 18px; }
-.footer-brand > a { align-items: center; display: inline-flex; font-size: 11px; gap: 8px; margin-top: 23px; }
-.footer-brand > a svg { width: 18px; }
+.footer-brand > a { align-items: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 100px; display: inline-flex; font-size: 13px; font-weight: 800; gap: 8px; margin-top: 23px; min-height: 44px; padding: 10px 15px; transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+.footer-brand > a:hover { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+.footer-brand > a svg { width: 19px; }
+.footer-brand > a svg:last-child { margin-left: 2px; width: 15px; }
 
 .footer-links {
   display: grid;
@@ -2007,8 +2024,11 @@ svg {
   .site-header { height: 74px; }
   .header-inner { padding-inline: 22px; }
   .desktop-nav,
-  .instagram-link,
   .header-contact { display: none; }
+  .instagram-link { background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 48%, #6228d7 100%); border: 0; box-shadow: 0 8px 20px rgba(214, 41, 118, 0.24); color: var(--white); display: grid; height: 46px; width: 46px; }
+  .instagram-link svg { width: 22px; }
+  .instagram-link:hover { background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 48%, #6228d7 100%); }
+  .instagram-link:active { transform: scale(0.94); }
   .menu-button { display: grid; }
   .hero { min-height: auto; padding-top: 74px; }
   .hero-grid { grid-template-columns: 1fr; min-height: auto; padding: 68px 28px 110px; }
@@ -2062,6 +2082,7 @@ svg {
   .brand-mark i { height: 15px; width: 15px; }
   .brand-type strong { font-size: 17px; }
   .brand-type small { font-size: 5.7px; margin-top: 5px; }
+  .instagram-link { height: 44px; width: 44px; }
   .menu-button { height: 44px; width: 44px; }
   .hero-grid { padding: 52px 20px 88px; }
   .hero-eyebrow { align-items: flex-start; flex-direction: column; font-size: 9px; margin-bottom: 18px; }

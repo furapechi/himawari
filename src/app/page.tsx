@@ -228,7 +228,7 @@ export default function Home() {
             {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
           </nav>
           <div className="header-actions">
-            <a className="instagram-link" href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="Instagramを開く"><Instagram /></a>
+            <a className="instagram-link" href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram /></a>
             <a className="header-contact" href="#contact"><Mail /><span>見学・相談</span></a>
             <button className="menu-button" type="button" onClick={() => setMenuOpen(true)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label="メニューを開く"><Menu /></button>
           </div>
@@ -244,6 +244,7 @@ export default function Home() {
           {navItems.map((item, index) => (
             <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}><span>0{index + 1}</span>{item.label}<ArrowRight /></a>
           ))}
+          <a className="mobile-menu-instagram" href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} aria-label="ひまわりFC公式Instagramを新しいタブで開く"><span>06</span>Instagram<Instagram /></a>
         </nav>
         <div className="mobile-menu-contact">
           <p>見学やご相談はお気軽に</p>
@@ -509,7 +510,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="container footer-main">
-          <div className="footer-brand"><Brand /><p>遊びから、「できた！」へ。</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer"><Instagram />Instagram</a></div>
+          <div className="footer-brand"><Brand /><p>遊びから、「できた！」へ。</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram />Instagramを見る<ExternalLink /></a></div>
           <div className="footer-links"><div><strong>サイトメニュー</strong>{navItems.slice(0, 3).map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div><div><strong>ご案内</strong><a href="#documents">情報公開</a><a href="#faq">よくあるご質問</a><a href="#access">アクセス</a><Link href="/privacy">プライバシーポリシー</Link></div></div>
           <div className="footer-contact"><strong>ひまわりFC</strong><p>〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a href="tel:0471570389"><Phone />04-7157-0389</a></div>
         </div>
