@@ -15,6 +15,7 @@ export type ContactPayload = {
   phone?: string;
   inquiryType: string;
   childAge?: string;
+  schoolName?: string;
   preferredContact: string;
   message: string;
   privacy: boolean;
@@ -41,6 +42,7 @@ export function validateContactPayload(input: unknown) {
     phone: clean(value.phone, 30),
     inquiryType: clean(value.inquiryType, 60),
     childAge: clean(value.childAge, 40),
+    schoolName: clean(value.schoolName, 120),
     preferredContact: clean(value.preferredContact, 30),
     message: clean(value.message, 2_000),
     privacy: value.privacy === true,

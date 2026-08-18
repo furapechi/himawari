@@ -27,13 +27,14 @@ export default function PrivacyPage() {
 
           <section>
             <h2>1. 取得する情報</h2>
-            <p>お問い合わせフォームを通じて、お名前、ふりがな、メールアドレス、電話番号、お子さまの年代、ご相談内容、ご希望の連絡方法等を取得します。</p>
+            <p>お問い合わせフォームを通じて、お名前、ふりがな、メールアドレス、電話番号、お子さまの年代、通学・通園先、ご相談内容、ご希望の連絡方法等を取得します。</p>
           </section>
           <section>
             <h2>2. 利用目的</h2>
             <ul>
               <li>見学、ご利用、支援内容等に関するお問い合わせへの回答</li>
               <li>ご希望に応じた連絡、日程調整および必要なご案内</li>
+              <li>送迎可能範囲および送迎ルートの確認</li>
               <li>サービス品質およびウェブサイトの安全性向上</li>
               <li>法令に基づく対応</li>
             </ul>
@@ -62,7 +63,7 @@ export default function PrivacyPage() {
               電話：<a href="tel:0471570389">04-7157-0389</a>
             </p>
           </section>
-          <p className="legal-date">制定日：2026年8月3日</p>
+          <p className="legal-date">制定日：2026年8月3日<br />最終改定日：2026年8月18日</p>
         </article>
 
         <Link className="button button-primary legal-back" href="/">

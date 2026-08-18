@@ -40,12 +40,17 @@ export async function ensureDatabase() {
           phone TEXT,
           inquiry_type TEXT NOT NULL,
           child_age TEXT,
+          school_name TEXT,
           preferred_contact TEXT NOT NULL,
           message TEXT NOT NULL,
           privacy_accepted BOOLEAN NOT NULL DEFAULT TRUE,
           ip_hash TEXT NOT NULL,
           user_agent TEXT
         )
+      `);
+      await pool.query(`
+        ALTER TABLE inquiries
+        ADD COLUMN IF NOT EXISTS school_name TEXT
       `);
       await pool.query(`
         CREATE INDEX IF NOT EXISTS inquiries_created_at_idx

@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     siteName: "ひまわりFC",
-    title: "ひまわりFC｜遊びから、「できた！」へ。",
+    title: "ひまわりFC｜サッカーで伸ばす、一人ひとりの「できた！」",
     description: "我孫子の児童発達支援・放課後等デイサービス。サッカーを中心に、一人ひとりの可能性を育みます。",
-    images: [{ url: "/images/hero-himawari.png", width: 1798, height: 899, alt: "ひまわりFCの活動イメージ" }],
+    images: [{ url: "/images/hero-soccer-v2.webp", width: 1254, height: 1254, alt: "ひまわりFCのサッカー療育イメージ" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ひまわりFC｜遊びから、「できた！」へ。",
+    title: "ひまわりFC｜サッカーで伸ばす、一人ひとりの「できた！」",
     description: "我孫子の児童発達支援・放課後等デイサービス",
-    images: ["/images/hero-himawari.png"],
+    images: ["/images/hero-soccer-v2.webp"],
   },
 };
 

@@ -62,13 +62,39 @@ const pillars = [
   },
 ];
 
-const daySteps = [
-  { label: "到着・健康確認", note: "安心して始められるよう、その日の様子を丁寧に確認します。", icon: Shield },
-  { label: "個別・集団活動", note: "一人ひとりの目標に合わせ、遊びや課題に取り組みます。", icon: Sparkles },
-  { label: "運動療育", note: "サッカーや運動遊びを通じて、心と身体をのびのび動かします。", icon: SoccerBall },
-  { label: "おやつ・休憩", note: "気持ちを切り替え、ゆったり過ごす時間も大切にします。", icon: Clock },
-  { label: "振り返り・送迎", note: "今日の達成を一緒に確かめ、次の自信へつなげます。", icon: Check },
+const daySchedules = [
+  {
+    kicker: "WEEKDAY",
+    title: "平日の流れ",
+    subtitle: "学校のある日の一例",
+    items: [
+      { time: "14:00", label: "学校へお迎え", note: "下校時間により変更あり" },
+      { time: "14:15", label: "到着、健康確認" },
+      { time: "16:00", label: "個別、集団活動" },
+      { time: "17:00", label: "おやつ休憩" },
+      { time: "17:30", label: "送迎" },
+    ],
+  },
+  {
+    kicker: "SATURDAY & HOLIDAY",
+    title: "土曜・祝日の流れ",
+    subtitle: "学校がお休みの日の一例",
+    items: [
+      { time: "9:30", label: "ご自宅へお迎え" },
+      { time: "10:00", label: "到着、健康確認" },
+      { time: "11:00", label: "個別、集団活動" },
+      { time: "12:30", label: "昼食" },
+      { time: "13:30", label: "自由時間" },
+      { time: "16:00", label: "おやつ" },
+      { time: "16:30", label: "送迎" },
+    ],
+  },
 ];
+
+const googleMapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent("ひまわりFC, 千葉県我孫子市本町3丁目5-25 渋谷ビル2F") +
+  "&query_place_id=ChIJd00R8eWdGGAR-BSDCdnpCRk";
 
 const useSteps = [
   ["01", "お問い合わせ", "お電話またはフォームから、見学やご利用についてご相談ください。"],
@@ -102,7 +128,7 @@ const structuredData = {
     streetAddress: "本町3-5-25 渋谷ビル2F",
     addressCountry: "JP",
   },
-  geo: { "@type": "GeoCoordinates", latitude: 35.87192, longitude: 140.011803 },
+  geo: { "@type": "GeoCoordinates", latitude: 35.8714194, longitude: 140.013913 },
   sameAs: ["https://www.instagram.com/himawari._.fc/"],
   parentOrganization: { "@type": "Organization", name: "株式会社ひまわり園" },
 };
@@ -191,6 +217,7 @@ export default function Home() {
           phone: fields.get("phone"),
           inquiryType: fields.get("inquiryType"),
           childAge: fields.get("childAge"),
+          schoolName: fields.get("schoolName"),
           preferredContact: fields.get("preferredContact"),
           message: fields.get("message"),
           privacy: fields.get("privacy") === "on",
@@ -261,8 +288,9 @@ export default function Home() {
             <div className="hero-copy">
               <p className="hero-eyebrow"><span>ABIKO, CHIBA</span>児童発達支援・放課後等デイサービス</p>
               <h1>
-                <span className="hero-title-prefix">遊びから、</span>
-                <span className="hero-title-result"><em>「できた！」</em>へ。</span>
+                <span className="hero-title-prefix">サッカーで伸ばす、</span>
+                <span className="hero-title-middle">一人ひとりの</span>
+                <span className="hero-title-result"><em>「できた！」</em></span>
               </h1>
               <p className="hero-lead">サッカーを中心とした運動療育で、<br className="desktop-only" />一人ひとりの個性と未来を、明るくのびやかに。</p>
               <div className="hero-buttons">
@@ -277,11 +305,11 @@ export default function Home() {
 
             <div className="hero-visual" aria-label="子どもたちがサッカーを楽しむ活動イメージ">
               <div className="hero-image-wrap">
-                <Image src="/images/hero-himawari.png" alt="スタッフと子どもたちが屋外でサッカーを楽しむイメージ" fill priority sizes="(max-width: 900px) 100vw, 58vw" />
+                <Image src="/images/hero-soccer-v2.webp" alt="スタッフに見守られながら子どもたちがサッカーボールを追いかける活動イメージ" fill priority sizes="(max-width: 900px) 100vw, 58vw" />
               </div>
               <div className="hero-badge hero-badge-main"><span className="mini-sun" aria-hidden="true" /><p><small>SINCE</small><strong>2022</strong></p></div>
               <div className="hero-badge hero-badge-note"><Sparkles /><p><strong>小さな一歩を</strong><span>大きな自信へ</span></p></div>
-              <p className="image-note">※写真は活動イメージです</p>
+              <p className="image-note">※画像は活動イメージです</p>
             </div>
           </div>
           <a className="scroll-cue" href="#message"><span>SCROLL</span><i /></a>
@@ -371,19 +399,26 @@ export default function Home() {
         </section>
 
         <section className="day-section section">
-          <div className="container day-grid">
+          <div className="container">
             <div className="day-intro" data-reveal>
               <p className="section-kicker">A DAY AT HIMAWARI</p>
               <h2>安心できるリズムの中で、<br />今日の「できた！」を。</h2>
-              <p>その日の体調や気持ち、個別支援計画に合わせて活動を組み立てます。流れはご利用時間や曜日によって異なります。</p>
-              <span className="example-label">放課後利用日の一例</span>
+              <p>ご利用日の過ごし方をイメージしていただけるよう、平日と土曜・祝日の流れをご紹介します。その日の体調や個別支援計画に合わせて活動を組み立てます。</p>
+              <span className="example-label">ご利用日の一例</span>
             </div>
-            <ol className="day-timeline">
-              {daySteps.map((step, index) => {
-                const Icon = step.icon;
-                return <li key={step.label} data-reveal><div className="timeline-icon"><Icon /></div><div><span>STEP {index + 1}</span><h3>{step.label}</h3><p>{step.note}</p></div></li>;
-              })}
-            </ol>
+            <div className="day-schedules">
+              {daySchedules.map((schedule) => (
+                <article className="day-schedule-card" key={schedule.kicker} data-reveal>
+                  <div className="day-schedule-head"><div><span>{schedule.kicker}</span><h3>{schedule.title}</h3><p>{schedule.subtitle}</p></div><Clock /></div>
+                  <ol>
+                    {schedule.items.map((item) => (
+                      <li key={`${schedule.kicker}-${item.time}`}><time dateTime={item.time}>{item.time}</time><div><strong>{item.label}</strong>{item.note ? <span>{item.note}</span> : null}</div></li>
+                    ))}
+                  </ol>
+                </article>
+              ))}
+            </div>
+            <p className="day-schedule-note">※下校時間やイベントにより、流れや時刻が変更となる場合があります。</p>
           </div>
         </section>
 
@@ -457,7 +492,7 @@ export default function Home() {
                   <div><dt><Phone />電話</dt><dd><a href="tel:0471570389">04-7157-0389</a></dd></div>
                   <div><dt><Clock />営業時間</dt><dd>平日 10:00–19:00<br />土曜・祝日 9:00–18:00<br /><small>定休日：日曜日・年末年始</small></dd></div>
                 </dl>
-                <a className="map-link" href="https://maps.google.com/?q=35.87192,140.011803" target="_blank" rel="noopener noreferrer">Google マップで見る<ExternalLink /></a>
+                <a className="map-link" href={googleMapsUrl} target="_blank" rel="noopener noreferrer">Google マップで見る<ExternalLink /></a>
               </div>
             </div>
             <div className="company-strip" data-reveal>
@@ -494,6 +529,7 @@ export default function Home() {
                 <label><span>お問い合わせ種別 <b>必須</b></span><select name="inquiryType" required defaultValue=""><option value="" disabled>選択してください</option><option>見学・体験について</option><option>ご利用・空き状況について</option><option>支援内容について</option><option>採用について</option><option>その他</option></select></label>
                 <label><span>お子さまの年代</span><select name="childAge" defaultValue=""><option value="">選択してください</option><option>未就学</option><option>小学校低学年</option><option>小学校高学年</option><option>中学生・高校生</option><option>該当なし・その他</option></select></label>
               </div>
+              <label className="form-row"><span>通学・通園先（学校名・園名） <small className="optional-label">任意</small></span><input name="schoolName" type="text" autoComplete="off" maxLength={120} placeholder="例）○○小学校" /><small className="field-help">送迎可能な範囲の確認に使用します。差し支えない範囲でご入力ください。</small></label>
               <fieldset className="form-row radio-field"><legend>ご希望の連絡方法 <b>必須</b></legend><div><label><input type="radio" name="preferredContact" value="メール" required /><span>メール</span></label><label><input type="radio" name="preferredContact" value="電話" /><span>電話</span></label><label><input type="radio" name="preferredContact" value="どちらでも可" /><span>どちらでも可</span></label></div></fieldset>
               <label className="form-row"><span>ご相談内容 <b>必須</b></span><textarea name="message" required minLength={10} maxLength={2000} rows={6} placeholder="見学希望日、ご利用について気になること、お子さまの様子などをご記入ください。" /></label>
               <div className="form-honeypot" aria-hidden="true"><label>ウェブサイト<input name="website" type="text" tabIndex={-1} autoComplete="off" /></label></div>
@@ -511,7 +547,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="container footer-main">
-          <div className="footer-brand"><Brand /><p>遊びから、「できた！」へ。</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram />Instagramを見る<ExternalLink /></a></div>
+          <div className="footer-brand"><Brand /><p>サッカーで伸ばす、一人ひとりの「できた！」</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram />Instagramを見る<ExternalLink /></a></div>
           <div className="footer-links"><div><strong>サイトメニュー</strong>{navItems.slice(0, 3).map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div><div><strong>ご案内</strong><a href="#documents">情報公開</a><a href="#faq">よくあるご質問</a><a href="#access">アクセス</a><Link href="/privacy">プライバシーポリシー</Link></div></div>
           <div className="footer-contact"><strong>ひまわりFC</strong><p>〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a className="footer-phone" href="tel:0471570389" aria-label="電話 04-7157-0389"><Phone /><span><small>TEL</small>04-7157-0389</span></a><p className="footer-fax" aria-label="FAX 04-7157-0399"><span>FAX</span>04-7157-0399</p></div>
         </div>

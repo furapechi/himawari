@@ -50,9 +50,9 @@ export async function POST(request: NextRequest) {
     const data = result.data;
     const inserted = await pool.query<{ id: string }>(
       `INSERT INTO inquiries (
-         name, name_kana, email, phone, inquiry_type, child_age,
+         name, name_kana, email, phone, inquiry_type, child_age, school_name,
          preferred_contact, message, privacy_accepted, ip_hash, user_agent
-       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, TRUE, $9, $10)
+       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, TRUE, $10, $11)
        RETURNING id::text`,
       [
         data.name,
@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
         data.phone || null,
         data.inquiryType,
         data.childAge || null,
+        data.schoolName || null,
         data.preferredContact,
         data.message,
         ipHash,

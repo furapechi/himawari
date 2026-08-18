@@ -600,19 +600,23 @@ svg {
 
 .hero h1 {
   font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-  font-size: clamp(58px, 6.4vw, 94px);
+  font-size: clamp(46px, 3.9vw, 60px);
   font-weight: 600;
-  letter-spacing: 0.03em;
-  line-height: 1.26;
-  white-space: nowrap;
+  letter-spacing: 0.01em;
+  line-height: 1.18;
 }
 
 .hero-title-prefix,
+.hero-title-middle,
 .hero-title-result {
   display: block;
+  white-space: nowrap;
 }
 
 .hero-title-result {
+  font-size: 1.12em;
+  line-height: 1.12;
+  margin-top: 0.04em;
   white-space: nowrap;
 }
 
@@ -1312,20 +1316,14 @@ svg {
 .day-section::before { height: 380px; left: -210px; top: -180px; width: 380px; }
 .day-section::after { bottom: -230px; height: 460px; right: -200px; width: 460px; }
 
-.day-grid {
-  display: grid;
-  gap: clamp(60px, 10vw, 150px);
-  grid-template-columns: 0.85fr 1.15fr;
-}
-
 .day-intro {
-  align-self: start;
-  position: sticky;
-  top: 130px;
+  max-width: 870px;
+  position: relative;
+  z-index: 1;
 }
 
 .day-intro .section-kicker { color: var(--sun); }
-.day-intro > p:not(.section-kicker) { color: rgba(255, 255, 255, 0.66); line-height: 2; margin-top: 28px; }
+.day-intro > p:not(.section-kicker) { color: rgba(255, 255, 255, 0.66); line-height: 2; margin-top: 28px; max-width: 760px; }
 
 .example-label {
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -1337,50 +1335,62 @@ svg {
   padding: 8px 15px;
 }
 
-.day-timeline {
-  list-style: none;
-  position: relative;
-}
-
-.day-timeline::before {
-  background: linear-gradient(var(--sun), rgba(244, 189, 45, 0.1));
-  bottom: 55px;
-  content: "";
-  left: 31px;
-  position: absolute;
-  top: 38px;
-  width: 1px;
-}
-
-.day-timeline li {
+.day-schedules {
   display: grid;
-  gap: 25px;
-  grid-template-columns: 64px 1fr;
-  padding-bottom: 42px;
+  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 48px;
   position: relative;
+  z-index: 1;
 }
 
-.day-timeline li:last-child { padding-bottom: 0; }
+.day-schedule-card {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 30px;
+}
 
-.timeline-icon {
-  background: var(--white);
-  border: 6px solid var(--green-dark);
-  border-radius: 50%;
-  color: var(--green-dark);
+.day-schedule-head {
+  align-items: flex-start;
+  display: flex;
+  gap: 22px;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.day-schedule-head > div > span { color: var(--sun); font-family: Arial, sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.16em; }
+.day-schedule-head h3 { font-family: "Yu Mincho", serif; font-size: clamp(24px, 2.4vw, 33px); font-weight: 600; margin-top: 5px; }
+.day-schedule-head p { color: rgba(255, 255, 255, 0.57); font-size: 11px; margin-top: 7px; }
+.day-schedule-head > svg { color: var(--sun); flex: 0 0 auto; width: 28px; }
+.day-schedule-card ol { border-top: 1px solid rgba(255, 255, 255, 0.13); list-style: none; }
+
+.day-schedule-card li {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
   display: grid;
-  height: 64px;
-  place-items: center;
-  position: relative;
-  width: 64px;
-  z-index: 2;
+  gap: 20px;
+  grid-template-columns: 78px 1fr;
+  min-height: 65px;
+  padding-block: 12px;
 }
 
-.timeline-icon svg { width: 23px; }
-.day-timeline li > div:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 32px; }
-.day-timeline li:last-child > div:last-child { border-bottom: 0; }
-.day-timeline span { color: var(--sun); font-family: Arial, sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.16em; }
-.day-timeline h3 { font-family: "Yu Mincho", serif; font-size: 24px; font-weight: 600; margin-top: 4px; }
-.day-timeline p { color: rgba(255, 255, 255, 0.63); font-size: 13px; line-height: 1.8; margin-top: 8px; }
+.day-schedule-card li:last-child { border-bottom: 0; }
+.day-schedule-card time { color: var(--sun); font-family: Arial, sans-serif; font-size: 16px; font-weight: 900; letter-spacing: 0.04em; }
+.day-schedule-card li > div { display: flex; flex-direction: column; gap: 3px; }
+.day-schedule-card strong { font-size: 14px; line-height: 1.5; }
+.day-schedule-card li span { color: rgba(255, 255, 255, 0.55); font-size: 10px; line-height: 1.5; }
+
+.day-schedule-note {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 11px;
+  line-height: 1.8;
+  margin-top: 22px;
+  position: relative;
+  text-align: right;
+  z-index: 1;
+}
 
 /* Guide */
 .guide-section {
@@ -1820,6 +1830,18 @@ svg {
   padding: 3px 5px;
 }
 
+.contact-form .optional-label {
+  background: #eef3ef;
+  border-radius: 5px;
+  color: var(--green);
+  font-size: 8px;
+  font-weight: 900;
+  margin-left: 5px;
+  padding: 3px 5px;
+}
+
+.contact-form .field-help { color: var(--ink-soft); font-size: 10px; font-weight: 500; line-height: 1.7; }
+
 .contact-form input:not([type="radio"]):not([type="checkbox"]),
 .contact-form select,
 .contact-form textarea {
@@ -2022,7 +2044,7 @@ svg {
   .desktop-nav { gap: 18px; margin-right: 18px; }
   .desktop-nav a { font-size: 11px; }
   .hero-grid { grid-template-columns: minmax(360px, 0.8fr) minmax(480px, 1.2fr); padding-inline: 30px; }
-  .hero h1 { font-size: clamp(55px, 6.2vw, 78px); }
+  .hero h1 { font-size: clamp(40px, 4vw, 48px); }
 }
 
 @media (max-width: 960px) {
@@ -2038,7 +2060,7 @@ svg {
   .hero { min-height: auto; padding-top: 74px; }
   .hero-grid { grid-template-columns: 1fr; min-height: auto; padding: 68px 28px 110px; }
   .hero-copy { max-width: 650px; padding: 0; }
-  .hero h1 { font-size: clamp(58px, 11vw, 84px); }
+  .hero h1 { font-size: clamp(46px, 7vw, 60px); }
   .hero-visual { height: min(78vw, 650px); margin-left: 8%; margin-top: 16px; }
   .hero-image-wrap { border-radius: 42% 58% 48% 52% / 53% 45% 55% 47%; }
   .hero-badge-note { right: 10px; }
@@ -2052,7 +2074,6 @@ svg {
   .feature-row.reverse .feature-image,
   .feature-row.reverse .feature-copy { order: initial; }
   .feature-image { max-height: 600px; }
-  .day-grid { gap: 70px; grid-template-columns: 0.9fr 1.1fr; }
   .guide-cta { align-items: flex-start; flex-direction: column; gap: 24px; }
   .document-grid { grid-template-columns: 1fr; }
   .document-feature > a { margin-top: 34px; }
@@ -2091,8 +2112,8 @@ svg {
   .menu-button { height: 44px; width: 44px; }
   .hero-grid { padding: 52px 20px 88px; }
   .hero-eyebrow { align-items: flex-start; flex-direction: column; font-size: 9px; margin-bottom: 18px; }
-  .hero h1 { font-size: clamp(48px, 15.5vw, 67px); line-height: 1.35; white-space: normal; }
-  .hero-title-result { font-size: 0.74em; letter-spacing: 0; line-height: 1.2; margin-top: 0.08em; }
+  .hero h1 { font-size: clamp(34px, 9.6vw, 46px); line-height: 1.2; }
+  .hero-title-result { font-size: 1.12em; letter-spacing: 0; line-height: 1.12; margin-top: 0.06em; }
   .hero h1 em::after { height: 8px; right: -3px; top: 2px; width: 8px; }
   .hero-lead { font-size: 14px; line-height: 1.9; margin-top: 20px; }
   .desktop-only { display: none; }
@@ -2131,15 +2152,15 @@ svg {
   .season-strip > div:nth-child(2) { border-right: 0; }
   .season-strip > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .season-strip > div { padding: 20px 12px; }
-  .day-grid { grid-template-columns: 1fr; }
+  .day-schedules { grid-template-columns: 1fr; }
   .day-intro,
   .faq-intro,
   .contact-intro { position: static; }
-  .day-timeline li { gap: 18px; grid-template-columns: 56px 1fr; }
-  .day-timeline::before { left: 27px; }
-  .timeline-icon { height: 56px; width: 56px; }
-  .timeline-icon svg { width: 20px; }
-  .day-timeline h3 { font-size: 21px; }
+  .day-schedule-card { border-radius: 24px; padding: 24px 20px; }
+  .day-schedule-head { padding-bottom: 20px; }
+  .day-schedule-card li { gap: 14px; grid-template-columns: 66px 1fr; }
+  .day-schedule-card time { font-size: 14px; }
+  .day-schedule-note { text-align: left; }
   .use-flow li { align-items: start; gap: 15px; grid-template-columns: 48px 1fr; padding: 24px 4px; }
   .use-flow li > svg { display: none; }
   .use-flow h3 { font-size: 19px; }
@@ -2185,8 +2206,8 @@ svg {
 
 @media (max-width: 380px) {
   .brand-type small { display: none; }
-  .hero h1 { font-size: 45px; }
-  .hero-title-result { font-size: 0.72em; }
+  .hero h1 { font-size: 30px; }
+  .hero-title-result { font-size: 1.12em; }
   .hero-badge-note { display: none; }
   .season-strip { grid-template-columns: 1fr; }
   .season-strip > div { border-bottom: 1px solid var(--line); border-right: 0; }
