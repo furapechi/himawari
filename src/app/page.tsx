@@ -93,6 +93,7 @@ const structuredData = {
   alternateName: "HIMAWARI FOOTBALL CLUB",
   description: "我孫子市の児童発達支援・放課後等デイサービス。サッカーを中心とした運動療育を提供しています。",
   telephone: "+81-4-7157-0389",
+  faxNumber: "+81-4-7157-0399",
   address: {
     "@type": "PostalAddress",
     postalCode: "270-1151",
@@ -331,7 +332,7 @@ export default function Home() {
         <section className="program-section section" id="program">
           <div className="program-blob" aria-hidden="true" />
           <div className="container">
-            <SectionHeading kicker="PROGRAM" title="夢中になれる体験が、未来をひらく。" lead="サッカーだけでなく、製作・おでかけ・クッキングなど、季節と好奇心に寄り添う多彩な活動を行います。" />
+            <SectionHeading kicker="PROGRAM" title="夢中になれる体験が、未来をひらく。" lead="サッカーだけではなく、季節に合わせ、製作・おでかけ・クッキングなど、好奇心に寄り添う多彩な活動を行います。" />
             <div className="feature-row" data-reveal>
               <div className="feature-image">
                 <Image src="/images/soccer-support.png" alt="スタッフが見守る中でサッカーに取り組む子どものイメージ" fill sizes="(max-width: 800px) 100vw, 52vw" />
@@ -343,7 +344,7 @@ export default function Home() {
                 <SoccerBall />
                 <h3>サッカー・運動療育</h3>
                 <p>走る、止まる、蹴る、見る、仲間と合わせる。楽しみながら身体の使い方を知り、ルールや順番、気持ちの切り替えも身につけていきます。</p>
-                <ul><li><Check />一人ひとりのペースで参加</li><li><Check />成功体験を丁寧に積み重ねる</li><li><Check />感覚統合・基礎体力づくり</li></ul>
+                <ul><li><Check />一人ひとりのペースで参加</li><li><Check />小さな成功体験</li><li><Check />感覚統合・基礎体力づくり</li></ul>
               </div>
             </div>
             <div className="feature-row reverse" data-reveal>
@@ -388,7 +389,7 @@ export default function Home() {
 
         <section className="guide-section section" id="guide">
           <div className="container">
-            <SectionHeading kicker="HOW TO USE" title="ご利用までの流れ" lead="「何から始めればいい？」という段階から大丈夫です。お子さまとご家族に合う進め方を一緒に考えます。" />
+            <SectionHeading kicker="HOW TO USE" title="ご利用までの流れ" lead="「何から始めればいい？」という段階からでも大丈夫です。お子さまとご家族に合う進め方を一緒に考えます。" />
             <ol className="use-flow">
               {useSteps.map(([number, title, text]) => (
                 <li key={number} data-reveal><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div><ArrowRight /></li>
@@ -410,7 +411,7 @@ export default function Home() {
                 <p className="document-label">SUPPORT PROGRAM</p>
                 <h3>支援プログラム</h3>
                 <p>5領域とのつながり、家族支援・移行支援・地域連携、年間行事などをご覧いただけます。</p>
-                <a href="http://www.himawari-fc.net/img/file-1747795715277-602701374.pdf" target="_blank" rel="noopener noreferrer">PDFを開く<Document /><ExternalLink /></a>
+                <a href="/documents/support-program.pdf" target="_blank" rel="noopener noreferrer">PDFを開く<Document /><ExternalLink /></a>
               </article>
               <article className="evaluation-card" data-reveal>
                 <div className="evaluation-head"><div><p className="document-label">SELF EVALUATION</p><h3>自己評価・アンケート結果</h3></div><Document /></div>
@@ -420,7 +421,7 @@ export default function Home() {
                   <a href="http://www.himawari-fc.net/img/file-1773804653637-60620760.pdf" target="_blank" rel="noopener noreferrer"><span><b>2024年度</b>保護者向け評価</span><ExternalLink /></a>
                   <a href="http://www.himawari-fc.net/img/file-1773804857099-987800904.pdf" target="_blank" rel="noopener noreferrer"><span><b>2024年度</b>事業者向け自己評価</span><ExternalLink /></a>
                 </div>
-                <p className="external-note">資料は既存サイトで公開されているPDFを新しいタブで開きます。</p>
+                <p className="external-note">評価資料は既存サイトで公開されているPDFを新しいタブで開きます。</p>
               </article>
             </div>
           </div>
@@ -512,7 +513,7 @@ export default function Home() {
         <div className="container footer-main">
           <div className="footer-brand"><Brand /><p>遊びから、「できた！」へ。</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram />Instagramを見る<ExternalLink /></a></div>
           <div className="footer-links"><div><strong>サイトメニュー</strong>{navItems.slice(0, 3).map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div><div><strong>ご案内</strong><a href="#documents">情報公開</a><a href="#faq">よくあるご質問</a><a href="#access">アクセス</a><Link href="/privacy">プライバシーポリシー</Link></div></div>
-          <div className="footer-contact"><strong>ひまわりFC</strong><p>〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a href="tel:0471570389"><Phone />04-7157-0389</a></div>
+          <div className="footer-contact"><strong>ひまわりFC</strong><p>〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a className="footer-phone" href="tel:0471570389" aria-label="電話 04-7157-0389"><Phone /><span><small>TEL</small>04-7157-0389</span></a><p className="footer-fax" aria-label="FAX 04-7157-0399"><span>FAX</span>04-7157-0399</p></div>
         </div>
         <div className="container footer-bottom"><p>© 2026 株式会社ひまわり園</p><span>児童発達支援・放課後等デイサービス</span></div>
       </footer>

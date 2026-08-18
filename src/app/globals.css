@@ -1945,8 +1945,13 @@ svg {
 
 .footer-contact > strong { font-family: "Yu Mincho", serif; font-size: 19px; }
 .footer-contact > p { color: rgba(255, 255, 255, 0.55); font-size: 10px; line-height: 1.8; margin-top: 13px; }
-.footer-contact > a { align-items: center; color: var(--sun); display: flex; font-size: 20px; font-weight: 800; gap: 8px; margin-top: 17px; }
-.footer-contact > a svg { width: 19px; }
+.footer-phone { align-items: center; color: var(--sun); display: flex; font-size: 20px; font-weight: 800; gap: 8px; margin-top: 17px; width: fit-content; }
+.footer-phone svg { flex: 0 0 auto; width: 19px; }
+.footer-phone > span { align-items: baseline; display: flex; gap: 8px; white-space: nowrap; }
+.footer-phone small,
+.footer-fax > span { font-size: 9px; font-weight: 900; letter-spacing: 0.12em; }
+.footer-contact > p.footer-fax { align-items: baseline; color: rgba(255, 255, 255, 0.72); display: flex; font-size: 14px; font-weight: 700; gap: 10px; letter-spacing: 0.03em; margin-top: 9px; white-space: nowrap; }
+.footer-fax > span { color: var(--sun); }
 
 .footer-bottom {
   align-items: center;
