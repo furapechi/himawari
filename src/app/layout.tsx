@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "運動療育",
     "サッカー療育",
   ],
-  authors: [{ name: "株式会社ひまわり園" }],
+  authors: [{ name: "ベル不動産企画株式会社" }],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

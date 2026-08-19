@@ -130,7 +130,7 @@ const structuredData = {
   },
   geo: { "@type": "GeoCoordinates", latitude: 35.8714194, longitude: 140.013913 },
   sameAs: ["https://www.instagram.com/himawari._.fc/"],
-  parentOrganization: { "@type": "Organization", name: "株式会社ひまわり園" },
+  parentOrganization: { "@type": "Organization", name: "ベル不動産企画株式会社" },
 };
 
 function Brand() {
@@ -283,10 +283,9 @@ export default function Home() {
 
       <main id="main-content">
         <section className="hero" id="top">
-          <div className="hero-sun" aria-hidden="true"><span /><span /><span /></div>
           <div className="hero-grid">
             <div className="hero-copy">
-              <p className="hero-eyebrow"><span>ABIKO, CHIBA</span>児童発達支援・放課後等デイサービス</p>
+              <p className="hero-eyebrow">児童発達支援・放課後等デイサービス</p>
               <h1>
                 <span className="hero-title-prefix">サッカーで伸ばす、</span>
                 <span className="hero-title-middle">一人ひとりの</span>
@@ -327,7 +326,7 @@ export default function Home() {
               <h2>ひまわりのように、<br />自分らしく咲いてほしい。</h2>
               <p>太陽に向かってまっすぐに咲くひまわりのように、子どもたちが自分らしく、のびのびと過ごせる場所でありたい。私たちは、一人ひとりの「好き」や「得意」を見つけ、楽しい活動の中から自信と未来への希望を育みます。</p>
               <p>うまくできた日も、思うようにいかなかった日も、そのすべてが成長の一歩。安全で安心できる環境の中で、子どもたちとご家族に寄り添い続けます。</p>
-              <div className="message-sign"><span>運営</span><strong>株式会社ひまわり園</strong></div>
+              <div className="message-sign"><span>運営</span><strong>ベル不動産企画株式会社</strong></div>
             </div>
           </div>
         </section>
@@ -496,7 +495,7 @@ export default function Home() {
               </div>
             </div>
             <div className="company-strip" data-reveal>
-              <div><span>運営法人</span><strong>株式会社ひまわり園</strong></div>
+              <div><span>運営法人</span><strong>ベル不動産企画株式会社</strong></div>
               <div><span>事業所番号</span><strong>1252500267</strong></div>
               <div><span>事業開始</span><strong>2022年11月1日</strong></div>
               <div><span>サービス</span><strong>児童発達支援／放課後等デイサービス</strong></div>
@@ -549,9 +548,9 @@ export default function Home() {
         <div className="container footer-main">
           <div className="footer-brand"><Brand /><p>サッカーで伸ばす、一人ひとりの「できた！」</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram />Instagramを見る<ExternalLink /></a></div>
           <div className="footer-links"><div><strong>サイトメニュー</strong>{navItems.slice(0, 3).map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div><div><strong>ご案内</strong><a href="#documents">情報公開</a><a href="#faq">よくあるご質問</a><a href="#access">アクセス</a><Link href="/privacy">プライバシーポリシー</Link></div></div>
-          <div className="footer-contact"><strong>ひまわりFC</strong><p>〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a className="footer-phone" href="tel:0471570389" aria-label="電話 04-7157-0389"><Phone /><span><small>TEL</small>04-7157-0389</span></a><p className="footer-fax" aria-label="FAX 04-7157-0399"><span>FAX</span>04-7157-0399</p></div>
+          <div className="footer-contact"><p className="footer-address">〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a className="footer-phone" href="tel:0471570389" aria-label="電話 04-7157-0389"><Phone /><span><small>TEL</small>04-7157-0389</span></a><p className="footer-fax" aria-label="FAX 04-7157-0399"><span>FAX</span>04-7157-0399</p></div>
         </div>
-        <div className="container footer-bottom"><p>© 2026 株式会社ひまわり園</p><span>児童発達支援・放課後等デイサービス</span></div>
+        <div className="container footer-bottom"><p>© 2026 ベル不動産企画株式会社</p><span>児童発達支援・放課後等デイサービス</span></div>
       </footer>
 
       <div className="mobile-fixed-cta"><a href="tel:0471570389"><Phone /><span>電話する</span></a><a href="#contact"><Mail /><span>見学・相談</span></a></div>

@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           <p className="section-kicker">PRIVACY POLICY</p>
           <h1>プライバシーポリシー</h1>
           <p className="legal-lead">
-            株式会社ひまわり園（以下「当社」）は、児童発達支援・放課後等デイサービスの運営においてお預かりする個人情報を大切に取り扱います。
+            ベル不動産企画株式会社（以下「当社」）は、児童発達支援・放課後等デイサービスの運営においてお預かりする個人情報を大切に取り扱います。
           </p>
 
           <section>
@@ -58,12 +58,12 @@ export default function PrivacyPage() {
           <section>
             <h2>7. お問い合わせ窓口</h2>
             <p>
-              株式会社ひまわり園　ひまわりFC<br />
+              ベル不動産企画株式会社　ひまわりFC<br />
               〒270-1151 千葉県我孫子市本町3-5-25 渋谷ビル2F<br />
               電話：<a href="tel:0471570389">04-7157-0389</a>
             </p>
           </section>
-          <p className="legal-date">制定日：2026年8月3日<br />最終改定日：2026年8月18日</p>
+          <p className="legal-date">制定日：2026年8月3日<br />最終改定日：2026年8月20日</p>
         </article>
 
         <Link className="button button-primary legal-back" href="/">
