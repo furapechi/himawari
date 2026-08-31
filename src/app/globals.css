@@ -10,6 +10,7 @@
   --sun: #f4bd2d;
   --sun-deep: #d99a0d;
   --sun-pale: #fff0b8;
+  --soccer-ball-center: url("/images/soccer-ball-center.svg");
   --coral: #e9806e;
   --coral-pale: #f9ddd5;
   --sky: #cee9e8;
@@ -212,8 +213,8 @@ svg {
 }
 
 .brand-mark i {
-  background: #79552f;
-  border: 3px dotted #a78252;
+  background: var(--paper) var(--soccer-ball-center) center / cover no-repeat;
+  border: 0;
   border-radius: 50%;
   height: 18px;
   position: relative;
@@ -722,7 +723,7 @@ svg {
 }
 
 .mini-sun::after {
-  background: #79552f;
+  background: var(--paper) var(--soccer-ball-center) center / cover no-repeat;
   border-radius: 50%;
   content: "";
   height: 10px;
@@ -877,9 +878,7 @@ svg {
 }
 
 .sunflower-center {
-  background: #7a5733;
-  background-image: radial-gradient(#a8814d 1px, transparent 2px);
-  background-size: 8px 8px;
+  background: var(--paper) var(--soccer-ball-center) center / cover no-repeat;
   border: 12px solid var(--paper);
   border-radius: 50%;
   height: 47%;
@@ -1428,7 +1427,7 @@ svg {
 
 .guide-cta > div { align-items: center; display: flex; gap: 18px; }
 .guide-cta .mini-sun { background: repeating-conic-gradient(var(--white) 0 20deg, transparent 20deg 45deg); height: 44px; margin: 0; width: 44px; }
-.guide-cta .mini-sun::after { background: var(--green-dark); height: 16px; left: 14px; top: 14px; width: 16px; }
+.guide-cta .mini-sun::after { background: var(--paper) var(--soccer-ball-center) center / cover no-repeat; height: 16px; left: 14px; top: 14px; width: 16px; }
 .guide-cta p { display: flex; flex-direction: column; min-width: 0; }
 .guide-cta strong { font-family: "Yu Mincho", serif; font-size: clamp(17px, 2vw, 23px); }
 .guide-cta small { font-size: 11px; margin-top: 2px; }
