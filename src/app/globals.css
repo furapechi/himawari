@@ -726,11 +726,11 @@ svg {
   background: var(--paper) var(--soccer-ball-center) center / cover no-repeat;
   border-radius: 50%;
   content: "";
-  height: 10px;
-  left: 8px;
+  height: 12px;
+  left: 7px;
   position: absolute;
-  top: 8px;
-  width: 10px;
+  top: 7px;
+  width: 12px;
 }
 
 .hero-badge-main p {
@@ -1427,7 +1427,7 @@ svg {
 
 .guide-cta > div { align-items: center; display: flex; gap: 18px; }
 .guide-cta .mini-sun { background: repeating-conic-gradient(var(--white) 0 20deg, transparent 20deg 45deg); height: 44px; margin: 0; width: 44px; }
-.guide-cta .mini-sun::after { background: var(--paper) var(--soccer-ball-center) center / cover no-repeat; height: 16px; left: 14px; top: 14px; width: 16px; }
+.guide-cta .mini-sun::after { background: var(--paper) var(--soccer-ball-center) center / cover no-repeat; height: 20px; left: 12px; top: 12px; width: 20px; }
 .guide-cta p { display: flex; flex-direction: column; min-width: 0; }
 .guide-cta strong { font-family: "Yu Mincho", serif; font-size: clamp(17px, 2vw, 23px); }
 .guide-cta small { font-size: 11px; margin-top: 2px; }
@@ -2068,7 +2068,7 @@ svg {
   .header-inner { padding-inline: 16px; }
   .brand-mark { height: 40px; width: 40px; }
   .brand-mark::before { height: 22px; width: 22px; }
-  .brand-mark i { height: 15px; width: 15px; }
+  .brand-mark i { height: 18px; width: 18px; }
   .brand-type strong { font-size: 17px; }
   .brand-type small { font-size: 5.7px; margin-top: 5px; }
   .instagram-link { height: 44px; width: 44px; }
@@ -2129,7 +2129,7 @@ svg {
   .use-flow p { font-size: 11px; }
   .guide-cta { padding: 27px 23px; }
   .guide-cta .mini-sun { height: 36px; width: 36px; }
-  .guide-cta .mini-sun::after { height: 13px; left: 11.5px; top: 11.5px; width: 13px; }
+  .guide-cta .mini-sun::after { height: 16px; left: 10px; top: 10px; width: 16px; }
   .guide-cta > div { align-items: flex-start; }
   .guide-cta .button { width: 100%; }
   .document-feature,
