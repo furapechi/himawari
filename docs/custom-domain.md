@@ -34,13 +34,28 @@
 5. 従来URLのページが新URLへ308転送され、パス・クエリが維持されることを確認する。APIは移行中のフォーム送信やヘルスチェックを維持するため転送対象外。
 6. 新ドメインのフォームの入力検証を確認する。実際の問い合わせデータをテスト用に保存しない。
 
-## 2026年9月15日時点の準備状況
+## 2026年9月15日の切り替え結果
 
 - Railwayへ独自ドメインを追加済み。
 - ムームーDNSのカスタム設定にALIAS/TXTを追加済み。ネームサーバーはdns01/dns02.muumuu-domain.com。
 - Google/CloudflareのDNSで反映確認済み。RailwayでもDNS反映を確認済み。
-- HTTPS開通と本番公開URLの切り替えは証明書発行待ち。
-- 従来のRailway URLは引き続き稼働する。
-- 新URLを指定したローカルのlint・本番ビルドは成功。トップ/プライバシーポリシーのcanonical、OG画像、robots.txt、sitemap.xml、旧ホストからの308転送（パス・クエリ維持）、フォームの空入力検証400を確認済み。
+- Railwayでドメイン所有確認済み、SSL証明書は `CERTIFICATE_STATUS_TYPE_VALID`。
+- 本番の `NEXT_PUBLIC_SITE_URL` を `https://himawari-fc.jp` に変更し、再ビルド・デプロイ成功。
+- 最終デプロイID: `93121aa4-21ae-4f52-9d6b-4d7ee4c84f26`（`SUCCESS`）。
+- 新ドメインのトップ・プライバシーポリシーはHTTPSで200。canonical、OG画像、robots.txt、sitemap.xmlは新ドメインを参照。
+- ヒーロー画像、サッカーボールSVG、支援プログラムPDFは新ドメインで200。
+- `/api/health` は200、データベース接続は `connected`。
+- 新旧ドメインの `/api/contact` に空のJSONを送信し、入力検証400を確認。実際の問い合わせデータの保存テストは行っていない。
+- 旧Railway URLのトップと `/privacy?from=domain-check` から新URLへの308転送を確認。パス・クエリを維持し、APIは転送対象外。
+- ブラウザーでも旧URLの再読み込みにより `https://himawari-fc.jp/#access` へ移動し、ページ内の位置指定を維持してサイトと地図が表示されることを確認。
+- サイトの内容・デザイン、メール設定は今回変更していない。ローカルのlint・本番ビルドも成功済み。
+
+## 別途対応が必要な保守事項
+
+切り替え時のビルドで依存パッケージの脆弱性警告を検出。`npm audit --omit=dev` でも `next`（critical）と `sharp`（high）を確認した。ドメイン変更とは別の更新作業として記録し、今回パッケージの更新は行っていない。
+
+- [Next.jsのAVIF画像処理に関するセキュリティ情報](https://github.com/advisories/GHSA-2xp9-vwfh-vxw4)：Next.js 15.5.24で修正。現在の15.5.22は影響範囲。
+- [sharpのセキュリティ情報](https://github.com/advisories/GHSA-rgj7-g3m4-5g8c)：0.35.4未満に対する警告。
+- Railway CLIは既存のConfig as Codeについて2026年12月1日まで動作すると通知している。将来の運用に向けた設定形式の移行も別途確認する。
 
 参考: [Railwayのドメイン設定](https://docs.railway.com/networking/domains/working-with-domains)、[ムームーDNSカスタム設定](https://support.muumuu-domain.com/hc/ja/articles/360046453854)
