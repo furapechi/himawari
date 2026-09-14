@@ -14,6 +14,8 @@ npm run dev
 ## 検証
 
 ```bash
+npm test
+npm run lint
 npm run build
 ```
 
@@ -28,3 +30,9 @@ Railway のWebサービスとPostgreSQLサービスを同一プロジェクト�
 `railway.json` にビルド、起動、ヘルスチェック設定を含みます。
 
 独自ドメインの切り替え手順は `docs/custom-domain.md` を参照してください。
+
+## 問い合わせメール
+
+窓口は `info@himawari-en-jp.com`。Google WorkspaceのGmail APIで施設通知とお客様への自動返信を行い、受付後は `/contact/thanks` へ移動します。設定前はメール送信を無効にし、既存のDB保存を維持します。
+
+既存メールはMicrosoft 365宛てのため、DNSの切り替え前に移行範囲の確認が必要です。認証・DNS・本番有効化・配信エラー対応は `docs/contact-mail.md` を参照してください。

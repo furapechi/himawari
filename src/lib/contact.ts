@@ -22,7 +22,7 @@ export type ContactPayload = {
   website?: string;
 };
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailPattern = /^[A-Za-z0-9.!#$%&'*+\-/=?^_`{|}~]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,63}$/;
 const phonePattern = /^[0-9+()\-\s]{9,20}$/;
 
 function clean(value: unknown, maxLength: number) {

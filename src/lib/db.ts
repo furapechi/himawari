@@ -53,6 +53,36 @@ export async function ensureDatabase() {
         ADD COLUMN IF NOT EXISTS school_name TEXT
       `);
       await pool.query(`
+        ALTER TABLE inquiries
+        ADD COLUMN IF NOT EXISTS submission_key UUID,
+        ADD COLUMN IF NOT EXISTS payload_hash TEXT,
+        ADD COLUMN IF NOT EXISTS mail_queued BOOLEAN NOT NULL DEFAULT FALSE
+      `);
+      await pool.query(`
+        CREATE UNIQUE INDEX IF NOT EXISTS inquiries_submission_key_idx
+        ON inquiries (submission_key)
+      `);
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS contact_mail_outbox (
+          id BIGSERIAL PRIMARY KEY,
+          inquiry_id BIGINT NOT NULL REFERENCES inquiries(id) ON DELETE CASCADE,
+          kind TEXT NOT NULL CHECK (kind IN ('staff', 'customer')),
+          status TEXT NOT NULL DEFAULT 'pending'
+            CHECK (status IN ('pending', 'processing', 'retry', 'sent', 'failed', 'uncertain')),
+          attempts INTEGER NOT NULL DEFAULT 0,
+          next_attempt_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+          last_attempt_at TIMESTAMPTZ,
+          sent_at TIMESTAMPTZ,
+          provider_id TEXT,
+          error_code TEXT,
+          UNIQUE (inquiry_id, kind)
+        )
+      `);
+      await pool.query(`
+        CREATE INDEX IF NOT EXISTS contact_mail_due_idx
+        ON contact_mail_outbox (next_attempt_at) WHERE status IN ('pending', 'retry')
+      `);
+      await pool.query(`
         CREATE INDEX IF NOT EXISTS inquiries_created_at_idx
         ON inquiries (created_at DESC)
       `);

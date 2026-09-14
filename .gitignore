@@ -9,6 +9,7 @@
 
 # production
 /build
+/.qa/
 
 # local environment files
 .env*

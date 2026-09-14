@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "@/components/Icons";
+import { CONTACT_EMAIL } from "@/lib/contact-config";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -35,6 +36,7 @@ export default function PrivacyPage() {
             <ul>
               <li>見学、ご利用、支援内容等に関するお問い合わせへの回答</li>
               <li>ご希望に応じた連絡、日程調整および必要なご案内</li>
+              <li>お問い合わせの受付確認メールの自動送信</li>
               <li>送迎可能範囲および送迎ルートの確認</li>
               <li>サービス品質およびウェブサイトの安全性向上</li>
               <li>法令に基づく対応</li>
@@ -61,10 +63,11 @@ export default function PrivacyPage() {
             <p>
               ベル不動産企画株式会社　ひまわりFC<br />
               〒270-1151 千葉県我孫子市本町3-5-25 渋谷ビル2F<br />
-              電話：<a href="tel:0471570389">04-7157-0389</a>
+              電話：<a href="tel:0471570389">04-7157-0389</a><br />
+              メール：<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
           </section>
-          <p className="legal-date">制定日：2026年8月3日<br />最終改定日：2026年8月20日</p>
+          <p className="legal-date">制定日：2026年8月3日<br />最終改定日：2026年9月15日</p>
         </article>
 
         <Link className="button button-primary legal-back" href="/">

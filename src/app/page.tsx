@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { CONTACT_EMAIL } from "@/lib/contact-config";
 import {
   ArrowRight,
   ArrowUp,
@@ -120,6 +122,7 @@ const structuredData = {
   description: "我孫子市の児童発達支援・放課後等デイサービス。サッカーを中心とした運動療育を提供しています。",
   telephone: "+81-4-7157-0389",
   faxNumber: "+81-4-7157-0399",
+  email: CONTACT_EMAIL,
   address: {
     "@type": "PostalAddress",
     postalCode: "270-1151",
@@ -156,6 +159,9 @@ function SectionHeading({ kicker, title, lead }: { kicker: string; title: string
 }
 
 export default function Home() {
+  const router = useRouter();
+  const submissionKey = useRef<string | null>(null);
+  const submitting = useRef(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [formState, setFormState] = useState<{
@@ -202,14 +208,17 @@ export default function Home() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
     const form = event.currentTarget;
     const fields = new FormData(form);
     setFormState({ type: "sending" });
 
     try {
+      submissionKey.current ||= crypto.randomUUID();
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Idempotency-Key": submissionKey.current },
         body: JSON.stringify({
           name: fields.get("name"),
           nameKana: fields.get("nameKana"),
@@ -225,7 +234,10 @@ export default function Home() {
         }),
       });
       const body = (await response.json()) as { error?: string; reference?: string };
-      if (!response.ok) throw new Error(body.error || "送信できませんでした。");
+      if (!response.ok) {
+        if (response.status >= 400 && response.status < 500) submissionKey.current = null;
+        throw new Error(body.error || "送信できませんでした。");
+      }
 
       form.reset();
       setFormState({
@@ -233,11 +245,13 @@ export default function Home() {
         message: "お問い合わせを受け付けました。内容を確認のうえご連絡します。",
         reference: body.reference,
       });
+      router.push("/contact/thanks");
     } catch (error) {
       setFormState({
         type: "error",
         message: error instanceof Error ? error.message : "送信できませんでした。",
       });
+      submitting.current = false;
     }
   }
 
@@ -511,6 +525,7 @@ export default function Home() {
               <h2>見学・ご相談を<br />お待ちしています。</h2>
               <p>お子さまのこと、ご利用のこと、まずはお話ししてみませんか。内容を確認後、施設からご連絡します。</p>
               <div className="phone-card"><span><Phone /></span><div><small>お電話でのお問い合わせ</small><a href="tel:0471570389">04-7157-0389</a><p>平日 10:00–19:00／土曜・祝日 9:00–18:00</p></div></div>
+              <div className="contact-email"><Mail /><div><span>メールでのお問い合わせ</span><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></div></div>
               <div className="contact-promise"><Shield /><p><strong>安心してご相談ください</strong><span>送信内容は暗号化され、問い合わせ対応の目的に限って安全に管理します。</span></p></div>
             </div>
 
@@ -538,7 +553,7 @@ export default function Home() {
               {formState.type === "error" ? <div className="form-notice error" role="alert"><p>{formState.message}</p></div> : null}
 
               <button className="submit-button" type="submit" disabled={formState.type === "sending"}>{formState.type === "sending" ? "送信しています…" : "この内容で送信する"}<Send /></button>
-              <p className="form-footnote">通常2〜3営業日以内を目安にご連絡します。お急ぎの場合はお電話ください。</p>
+              <p className="form-footnote">通常2〜3営業日以内を目安にご連絡します。送信後に受付番号をご案内します。お急ぎの場合はお電話ください。</p>
             </form>
           </div>
         </section>
@@ -548,7 +563,7 @@ export default function Home() {
         <div className="container footer-main">
           <div className="footer-brand"><Brand /><p>サッカーで伸ばす、一人ひとりの「できた！」</p><a href="https://www.instagram.com/himawari._.fc/" target="_blank" rel="noopener noreferrer" aria-label="ひまわりFC公式Instagramを新しいタブで開く"><Instagram />Instagramを見る<ExternalLink /></a></div>
           <div className="footer-links"><div><strong>サイトメニュー</strong>{navItems.slice(0, 3).map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div><div><strong>ご案内</strong><a href="#documents">情報公開</a><a href="#faq">よくあるご質問</a><a href="#access">アクセス</a><Link href="/privacy">プライバシーポリシー</Link></div></div>
-          <div className="footer-contact"><p className="footer-address">〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a className="footer-phone" href="tel:0471570389" aria-label="電話 04-7157-0389"><Phone /><span><small>TEL</small>04-7157-0389</span></a><p className="footer-fax" aria-label="FAX 04-7157-0399"><span>FAX</span>04-7157-0399</p></div>
+          <div className="footer-contact"><p className="footer-address">〒270-1151<br />千葉県我孫子市本町3-5-25 渋谷ビル2F</p><a className="footer-phone" href="tel:0471570389" aria-label="電話 04-7157-0389"><Phone /><span><small>TEL</small>04-7157-0389</span></a><p className="footer-fax" aria-label="FAX 04-7157-0399"><span>FAX</span>04-7157-0399</p><a className="footer-email" href={`mailto:${CONTACT_EMAIL}`}><Mail />{CONTACT_EMAIL}</a></div>
         </div>
         <div className="container footer-bottom"><p>© 2026 ベル不動産企画株式会社</p><span>児童発達支援・放課後等デイサービス</span></div>
       </footer>
