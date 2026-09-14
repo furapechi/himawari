@@ -51,7 +51,7 @@ export function encodeMessage(message: ContactMessage, messageId: string) {
     `From: =?UTF-8?B?${Buffer.from("ひまわりFC").toString("base64")}?= <${CONTACT_EMAIL}>`,
     `To: ${message.to}`, `Reply-To: ${message.replyTo}`,
     `Subject: ${subject}`,
-    `Message-ID: <${messageId}@himawari-en-jp.com>`, `Date: ${new Date().toUTCString()}`,
+    `Message-ID: <${messageId}@${CONTACT_EMAIL.split("@")[1]}>`, `Date: ${new Date().toUTCString()}`,
     "MIME-Version: 1.0", "Auto-Submitted: auto-generated", "X-Auto-Response-Suppress: All",
     `Content-Type: multipart/alternative; boundary="${boundary}"`, "",
     `--${boundary}`, 'Content-Type: text/plain; charset="UTF-8"', "Content-Transfer-Encoding: base64", "", encoded(message.text),

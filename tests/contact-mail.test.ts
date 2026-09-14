@@ -10,6 +10,16 @@ const date = new Date("2026-09-15T00:00:00Z");
 afterEach(() => { vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
 
 describe("問い合わせメール", () => {
+  it("差出人・返信先・Message-ID・案内文がhimawari-fc.jpに統一される", () => {
+    expect(CONTACT_EMAIL).toBe("info@himawari-fc.jp");
+    const mail = buildContactMessage("customer", input, "HF-000123", date);
+    const raw = Buffer.from(encodeMessage(mail, "hf-123-customer"), "base64url").toString("utf8");
+    expect(raw).toContain("<info@himawari-fc.jp>");
+    expect(raw).toContain("Reply-To: info@himawari-fc.jp");
+    expect(raw).toContain("Message-ID: <hf-123-customer@himawari-fc.jp>");
+    expect(mail.text).toContain("メール：info@himawari-fc.jp");
+    expect(mail.html).toContain("info@himawari-fc.jp");
+  });
   it("施設宛ては指定窓口で、返信先はお客様、入力値はHTMLとして実行されない", () => {
     const mail = buildContactMessage("staff", input, "HF-000123", date);
     expect(mail.to).toBe(CONTACT_EMAIL);

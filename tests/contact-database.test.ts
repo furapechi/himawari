@@ -46,7 +46,7 @@ describe("実PostgreSQLエンジンでの保存・配信処理（メモリー上
     expect((await database.query("SELECT * FROM contact_mail_outbox")).rows).toHaveLength(2);
     await dispatchContactMail();
     expect(delivery.send).toHaveBeenCalledTimes(2);
-    expect(delivery.send.mock.calls[0][0].to).toBe("info@himawari-en-jp.com");
+    expect(delivery.send.mock.calls[0][0].to).toBe("info@himawari-fc.jp");
     expect(delivery.send.mock.calls[1][0].to).toBe("parent@example.com");
     expect((await database.query<{ status: string }>("SELECT status FROM contact_mail_outbox")).rows.map((row) => row.status)).toEqual(["sent", "sent"]);
     await dispatchContactMail();
