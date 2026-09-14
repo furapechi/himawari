@@ -37,8 +37,9 @@
 ## 2026年9月15日時点の準備状況
 
 - Railwayへ独自ドメインを追加済み。
-- ムームードメインはログイン待ち。DNSレコードの変更は未実施。
-- DNS/HTTPS開通と本番公開URLの切り替えは未完了。
+- ムームーDNSのカスタム設定にALIAS/TXTを追加済み。ネームサーバーはdns01/dns02.muumuu-domain.com。
+- Google/CloudflareのDNSで反映確認済み。RailwayでもDNS反映を確認済み。
+- HTTPS開通と本番公開URLの切り替えは証明書発行待ち。
 - 従来のRailway URLは引き続き稼働する。
 - 新URLを指定したローカルのlint・本番ビルドは成功。トップ/プライバシーポリシーのcanonical、OG画像、robots.txt、sitemap.xml、旧ホストからの308転送（パス・クエリ維持）、フォームの空入力検証400を確認済み。
 
