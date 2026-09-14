@@ -23,6 +23,8 @@ Railway のWebサービスとPostgreSQLサービスを同一プロジェクト�
 
 - `DATABASE_URL=${{Postgres.DATABASE_URL}}`
 - `CONTACT_HASH_SALT=<random secret>`
-- `NEXT_PUBLIC_SITE_URL=https://<railway-domain>`
+- `NEXT_PUBLIC_SITE_URL=https://himawari-fc.jp`（DNS・HTTPSの開通確認後に設定）
 
 `railway.json` にビルド、起動、ヘルスチェック設定を含みます。
+
+独自ドメインの切り替え手順は `docs/custom-domain.md` を参照してください。

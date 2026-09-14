@@ -6,6 +6,21 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    // Enable the move only after DNS/TLS is ready and the public URL is switched.
+    if (process.env.NEXT_PUBLIC_SITE_URL !== "https://himawari-fc.jp") {
+      return [];
+    }
+
+    return [
+      {
+        source: "/:path((?!api(?:/|$)).*)",
+        has: [{ type: "host", value: "himawari-web-production.up.railway.app" }],
+        destination: "https://himawari-fc.jp/:path",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

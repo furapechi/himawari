@@ -5,6 +5,7 @@ import { ArrowRight } from "@/components/Icons";
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
   description: "ひまわりFCにおける個人情報の取り扱いについてご案内します。",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
