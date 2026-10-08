@@ -464,12 +464,12 @@ export default function Home() {
               <article className="evaluation-card" data-reveal>
                 <div className="evaluation-head"><div><p className="document-label">SELF EVALUATION</p><h3>自己評価・アンケート結果</h3></div><Document /></div>
                 <div className="evaluation-list">
-                  <a href="http://www.himawari-fc.net/img/file-1773908750576-376323269.pdf" target="_blank" rel="noopener noreferrer"><span><b>2025年度</b>保護者向け評価</span><ExternalLink /></a>
-                  <a href="http://www.himawari-fc.net/img/file-1773908828836-697581550.pdf" target="_blank" rel="noopener noreferrer"><span><b>2025年度</b>事業者向け自己評価</span><ExternalLink /></a>
-                  <a href="http://www.himawari-fc.net/img/file-1773804653637-60620760.pdf" target="_blank" rel="noopener noreferrer"><span><b>2024年度</b>保護者向け評価</span><ExternalLink /></a>
-                  <a href="http://www.himawari-fc.net/img/file-1773804857099-987800904.pdf" target="_blank" rel="noopener noreferrer"><span><b>2024年度</b>事業者向け自己評価</span><ExternalLink /></a>
+                  <a href="/documents/evaluation-2025-parent.pdf" target="_blank" rel="noopener noreferrer"><span><b>2025年度</b>保護者向け評価</span><ExternalLink /></a>
+                  <a href="/documents/evaluation-2025-provider.pdf" target="_blank" rel="noopener noreferrer"><span><b>2025年度</b>事業者向け自己評価</span><ExternalLink /></a>
+                  <a href="/documents/evaluation-2024-parent.pdf" target="_blank" rel="noopener noreferrer"><span><b>2024年度</b>保護者向け評価</span><ExternalLink /></a>
+                  <a href="/documents/evaluation-2024-provider.pdf" target="_blank" rel="noopener noreferrer"><span><b>2024年度</b>事業者向け自己評価</span><ExternalLink /></a>
                 </div>
-                <p className="external-note">評価資料は既存サイトで公開されているPDFを新しいタブで開きます。</p>
+                <p className="external-note">当サイトで公開している評価資料（PDF）を新しいタブで開きます。</p>
               </article>
             </div>
           </div>

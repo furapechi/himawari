@@ -19,6 +19,10 @@ npm run lint
 npm run build
 ```
 
+## 公開資料
+
+自己評価・保護者評価のPDFは `public/documents/evaluation-年度-parent.pdf`（保護者向け）と `evaluation-年度-provider.pdf`（事業者向け）に原本のまま保存し、当サイト内のURLで公開します。旧サイトのURLには依存しません。年度の追加・差し替え時はトップページのリンクと `tests/evaluation-documents.test.ts` の対応表も更新してください。
+
 ## デプロイ
 
 Railway のWebサービスとPostgreSQLサービスを同一プロジェクトに作成し、Webサービスへ次の変数を設定します。
